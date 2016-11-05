@@ -10,7 +10,7 @@ angular.module('stockDogApp')
       return $location.path();
     }, function (path) {
       // Fixme: Doesn't work yet
-      if(_.contains(path, 'watchlist')) { 
+      if(_.includes(path, 'watchlist')) { 
         $scope.activeView = 'watchlist'; 
       } else {
         $scope.activeView = 'dashboard';
