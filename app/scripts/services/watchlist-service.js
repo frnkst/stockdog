@@ -49,7 +49,7 @@ angular.module('stockDogApp')
           return calcs;
         }, { shares: 0, marketValue: 0, dayChange: 0 });
 
-        this.shares = calc.shares;
+        this.shares = calcs.shares;
         this.marketValue = calcs.marketValue;
         this.dayChange = calcs.dayChange;
       } 
@@ -59,13 +59,13 @@ angular.module('stockDogApp')
     var loadModel = function() {
       var model = {
         watchlists: localStorage['StockDog.watchlists'] ?
-        JSON.parse(localStorage['StockDog.watchlists']) : [],
+          JSON.parse(localStorage['StockDog.watchlists']) : [],
         nextId: localStorage['StockDog.nextId'] ?
-        parseInt(localStorage['StockDog.nextId']) : 0
+          parseInt(localStorage['StockDog.nextId']) : 0
         };
         _.each(model.watchlists, function (watchlist) {
           _.extend(watchlist, WatchlistModel);
-          _.each(watchlist, stocks, function (stock) {
+          _.each(watchlist.stocks, function (stock) {
             _.extend(stock, StockModel);
           });
         });
@@ -98,7 +98,7 @@ angular.module('stockDogApp')
       this.save = function(watchlist) {
         watchlist.id = Model.nextId++;
         watchlist.stocks = [];
-        _.extends(watchlist, WatchlistModel);
+        _.extend(watchlist, WatchlistModel);
         Model.watchlists.push(watchlist);
         saveModel();
       };

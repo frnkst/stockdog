@@ -12,7 +12,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="stock-symbol">Symbol</label>
-                        // [1] Use ng-options with label syntax and bs-typeahead directive
+                        <!-- [1] Use ng-options with label syntax and bs-typeahead directive -->
                         <input type="text"
                         class="form-control"
                         id="stock-symbol"
@@ -22,7 +22,7 @@
                         bs-typeahead
                         required>
                     </div>
-                    // [2] Only accept number for shares owned
+                    <!-- [2] Only accept number for shares owned -->
                     <div class="form-group">
                         <label for ="stock-shares">Shares Owned</label>
                         <input type="number" 
@@ -35,7 +35,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success"
-                    mg-click="addStock()" ng-disabled="!stockForm.$valid">Add </button>
+                    ng-click="addStock()" ng-disabled="!stockForm.$valid">Add</button>
                     <button type="btn btn-danger" ng-click="$hide()">Cancel</button>
                 </div>
             </form>

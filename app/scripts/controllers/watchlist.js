@@ -11,8 +11,8 @@ angular.module('stockDogApp')
   .controller('WatchlistCtrl', function ($scope, $routeParams, $modal, WatchlistService, CompanyService) {
     // [1] Initializations
     $scope.companies = CompanyService.query();
-    $scope.watchlist = WatchlistService.query($routeParams.listId);
-    $scope.stocks = $scope.watchlist.stocks;
+    $scope.wlist = WatchlistService.query($routeParams.listId);
+    $scope.stocks = $scope.wlist.stocks;
     $scope.newStock = {};
     var addStockModal = $modal({
       scope: $scope,
@@ -26,8 +26,8 @@ angular.module('stockDogApp')
     };
 
     // [3] Call the WatchlistModel addStock() function and hide the modal
-    $scope.addStock()= function() {
-      $scope.watchlist.addStock({
+    $scope.addStock = function() {
+      $scope.wlist.addStock({
         listId: $routeParams.listId,
         company: $scope.newStock.company,
         shares: $scope.newStock.shares
