@@ -48,7 +48,7 @@
             {{stock.percentChange}}
           </span>
         </td>
-        <td>{{stock.marketValue | currency}}</td>
+        <td stk-sign-fade="{{stock.marketValue}}">{{stock.marketValue | currency}}</td>
         <td stk-sign-color="{{stock.dayChange}}">{{stock.dayChange | currency}}
             <button type="button" class="close" ng-click="removeStock(stock)">&times;</button>
         </td>
