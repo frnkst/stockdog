@@ -14,7 +14,7 @@ angular.module('stockDogApp')
     // Augment Stocks with additional helper functions
     var StockModel = {
       save: function() {
-        var watchlist = findById(this.id);
+        var watchlist = findById(this.listId);
         watchlist.recalculate();
         saveModel();
       }
@@ -35,6 +35,7 @@ angular.module('stockDogApp')
         this.recalculate();
         saveModel();
       },
+      
       removeStock: function (stock) {
         _.remove(this.stocks, function (s) {
           return s.company.symbol === stock.company.symbol;
@@ -42,6 +43,7 @@ angular.module('stockDogApp')
         this.recalculate();
         saveModel();
       },
+      
       recalculate: function() {
         var calcs = _.reduce(this.stocks, function (calcs, stock) {
           calcs.shares += stock.shares;
@@ -78,12 +80,12 @@ angular.module('stockDogApp')
         localStorage['StockDog.nextId'] = Model.nextId;
       };
 
-      // [3] Helper: Use lodash to find watchlist with given Id
-      var findById = function(listId) {
-        return _.find(Model.watchlists, function(watchlist) {
-          return watchlist.id === parseInt(listId);
-        });
-      };  
+    // Helper: Use lodash to find a watchlist with given ID
+    var findById = function (listId) {
+      return _.find(Model.watchlists, function (watchlist) {
+        return watchlist.id === parseInt(listId);
+      });
+    };
 
       // [4] Helper: return all watchlists or find by given Id
       this.query = function(listId) {
